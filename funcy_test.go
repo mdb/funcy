@@ -21,6 +21,16 @@ func TestContains(t *testing.T) {
 	}
 }
 
+func TestDedupe(t *testing.T) {
+	list := []string{"foo", "foo", "bar"}
+
+	got := Dedupe(list)
+	expected := []string{"foo", "bar"}
+	if len(got) != len(expected) || got[0] != expected[0] || got[1] != expected[1] {
+		t.Fatalf("expected: %v, got: %v", expected, got)
+	}
+}
+
 func TestReverse(t *testing.T) {
 	list := []string{"foo", "bar", "baz"}
 

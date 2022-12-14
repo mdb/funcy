@@ -25,6 +25,18 @@ func Reverse[E any](s []E) []E {
   return result
 }
 
+func Dedupe[E comparable](s []E) []E {
+  result := make([]E, 0, len(s))
+
+  for _, item := range s {
+    if !Contains(result, item) {
+      result = append(result, item)
+    }
+  }
+
+  return result
+}
+
 func Sort[E constraints.Ordered](s []E) []E {
   result := make([]E, len(s))
 
