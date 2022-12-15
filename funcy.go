@@ -1,8 +1,9 @@
 package funcy
 
 import (
-	"golang.org/x/exp/constraints"
 	"sort"
+
+	"golang.org/x/exp/constraints"
 )
 
 func Contains[E comparable](s []E, v E) bool {
