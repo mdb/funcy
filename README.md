@@ -1,4 +1,4 @@
-# funcy
+# funcy ("funky")
 
 A minimal Go package providing a few functional utilities.
 
