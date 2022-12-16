@@ -4,7 +4,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-// Contains returns true of the slice it's passed contains the
+// Contains returns true if the slice it's passed contains the
 // element it's passed.
 func Contains[E comparable](s []E, v E) bool {
 	for _, vs := range s {
@@ -27,8 +27,7 @@ func Reverse[E any](s []E) []E {
 	return result
 }
 
-// Dedupe returns a version of the slice it's passed with
-// duplicate elements removed.
+// Dedupe returns the slice it's passed with duplicate elements removed.
 func Dedupe[E comparable](s []E) []E {
 	result := make([]E, 0, len(s))
 
@@ -74,17 +73,16 @@ func Quicksort[E constraints.Ordered](arr []E) []E {
 	return quicksort(arr, 0, len(arr)-1)
 }
 
-// Sort returns a version of the slice it's passed with all
-// elements in ascending sorted order.
+// Sort returns the slice it's passed with all elements in ascending
+// sorted order. It uses Quicksort.
 func Sort[E constraints.Ordered](s []E) []E {
 	return Quicksort(s)
 }
 
 type mapFunc[E any] func(E) E
 
-// Map iterates over the slice it's passed and applies the
-// function it's passed to each element, returning a new,
-// resulting slice.
+// Map applies the function it's passed to each element in the slice
+// it's passed and returns the resulting slice.
 func Map[E any](s []E, f mapFunc[E]) []E {
 	result := make([]E, len(s))
 
@@ -97,9 +95,9 @@ func Map[E any](s []E, f mapFunc[E]) []E {
 
 type keepFunc[E any] func(E) bool
 
-// Filter iterates over the slice it's passed and applies the
-// filtering function it's passed to filter out unwanted elements,
-// returning a new slice.
+// Filter applies the function it's passed to each element in the slice
+// it's passed to filter out unwanted elements and return the resulting,
+// filtered slice.
 func Filter[E any](s []E, f keepFunc[E]) []E {
 	result := []E{}
 
