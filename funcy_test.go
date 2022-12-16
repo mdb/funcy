@@ -75,6 +75,29 @@ func TestFilter(t *testing.T) {
 	}
 }
 
+func TestFind(t *testing.T) {
+	list := []int{3, 1, 2}
+
+	got, err := Find(list, func(e int) bool {
+		return e%3 == 0
+	})
+	if err != nil {
+		t.Fatalf("expected not to error")
+	}
+
+	expected := 3
+	if expected != got {
+		t.Fatalf("expected: %v, got: %v", expected, got)
+	}
+
+	_, err = Find(list, func(e int) bool {
+		return e == 100
+	})
+	if err == nil {
+		t.Fatalf("expected error")
+	}
+}
+
 func TestReduce(t *testing.T) {
 	list := []int{3, 1, 2}
 

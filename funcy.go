@@ -1,6 +1,8 @@
 package funcy
 
 import (
+	"errors"
+
 	"golang.org/x/exp/constraints"
 )
 
@@ -108,6 +110,22 @@ func Filter[E any](s []E, f retainer[E]) []E {
 	}
 
 	return result
+}
+
+type finder[E any] func(E) bool
+
+// Find applies the function it's passed to each element in the slice
+// and returns the first element for which the function returns true.
+func Find[E any](s []E, f finder[E]) (E, error) {
+	for _, v := range s {
+		if f(v) {
+			return v, nil
+		}
+	}
+
+	var e E
+
+	return e, errors.New("not found")
 }
 
 type reducer[E any] func(E, E) E
