@@ -6,6 +6,8 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
+// Contains returns true of the slice it's passed contains the
+// element it's passed.
 func Contains[E comparable](s []E, v E) bool {
 	for _, vs := range s {
 		if v == vs {
@@ -16,6 +18,7 @@ func Contains[E comparable](s []E, v E) bool {
 	return false
 }
 
+// Reverse returns the slice it's passed in reverse order.
 func Reverse[E any](s []E) []E {
 	result := make([]E, 0, len(s))
 
@@ -26,6 +29,8 @@ func Reverse[E any](s []E) []E {
 	return result
 }
 
+// Dedupe returns a version of the slice it's passed with
+// duplicate elements removed.
 func Dedupe[E comparable](s []E) []E {
 	result := make([]E, 0, len(s))
 
@@ -38,6 +43,8 @@ func Dedupe[E comparable](s []E) []E {
 	return result
 }
 
+// Sort returns a version of the slice it's passed with all
+// elements in ascending sorted order.
 func Sort[E constraints.Ordered](s []E) []E {
 	result := make([]E, len(s))
 
@@ -52,6 +59,9 @@ func Sort[E constraints.Ordered](s []E) []E {
 
 type mapFunc[E any] func(E) E
 
+// Map iterates over the slice it's passed and applies the
+// function it's passed to each element, returning a new,
+// resulting slice.
 func Map[E any](s []E, f mapFunc[E]) []E {
 	result := make([]E, len(s))
 
@@ -64,6 +74,9 @@ func Map[E any](s []E, f mapFunc[E]) []E {
 
 type keepFunc[E any] func(E) bool
 
+// Filter iterates over the slice it's passed and applies the
+// filtering function it's passed to filter out unwanted elements,
+// returning a new slice.
 func Filter[E any](s []E, f keepFunc[E]) []E {
 	result := []E{}
 
@@ -78,6 +91,11 @@ func Filter[E any](s []E, f keepFunc[E]) []E {
 
 type reduceFunc[E any] func(E, E) E
 
+// Reduce executes the function it's passed on each element of the
+// slice it's passed, in order and beginning with the specified initial
+// value, passing in the return value from the calculation on the preceding
+// element. It returns the final result, after operating on all elements in
+// the slice.
 func Reduce[E any](s []E, init E, f reduceFunc[E]) E {
 	cur := init
 
