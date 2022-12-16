@@ -128,6 +128,21 @@ func Find[E any](s []E, f finder[E]) (E, error) {
 	return e, errors.New("not found")
 }
 
+type evaluator[E any] func(E) bool
+
+// Any applies the function it's passed to each element in the slice
+// and returns true for the first element for which the function returns
+// true. Otherwise, it returns false.
+func Any[E any](s []E, f evaluator[E]) bool {
+	for _, v := range s {
+		if f(v) {
+			return true
+		}
+	}
+
+	return false
+}
+
 type reducer[E any] func(E, E) E
 
 // Reduce executes the function it's passed on each element of the

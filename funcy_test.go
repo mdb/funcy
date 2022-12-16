@@ -98,6 +98,28 @@ func TestFind(t *testing.T) {
 	}
 }
 
+func TestAny(t *testing.T) {
+	list := []int{3, 1, 2}
+
+	got := Any(list, func(e int) bool {
+		return e%3 == 0
+	})
+
+	expected := true
+	if expected != got {
+		t.Fatalf("expected: %v, got: %v", expected, got)
+	}
+
+	got = Any(list, func(e int) bool {
+		return e == 100
+	})
+
+	expected = false
+	if expected != got {
+		t.Fatalf("expected: %v, got: %v", expected, got)
+	}
+}
+
 func TestReduce(t *testing.T) {
 	list := []int{3, 1, 2}
 
