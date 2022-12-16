@@ -7,5 +7,5 @@ Nothin' too special; largely just for my own learning and casual use, but perhap
 ## Test
 
 ```
-go test
+make
 ```
