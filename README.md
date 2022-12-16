@@ -1,3 +1,5 @@
+[![CI](https://github.com/mdb/funcy/actions/workflows/ci.yaml/badge.svg)](https://github.com/mdb/funcy/actions/workflows/ci.yaml)
+
 # funcy ("funky")
 
 A minimal Go package providing a few functional utilities using Go [generics](https://go.dev/blog/intro-generics).
