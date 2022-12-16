@@ -79,11 +79,11 @@ func Sort[E constraints.Ordered](s []E) []E {
 	return Quicksort(s)
 }
 
-type mapFunc[E any] func(E) E
+type mapper[E any] func(E) E
 
 // Map applies the function it's passed to each element in the slice
 // it's passed and returns the resulting slice.
-func Map[E any](s []E, f mapFunc[E]) []E {
+func Map[E any](s []E, f mapper[E]) []E {
 	result := make([]E, len(s))
 
 	for i := range s {
@@ -93,12 +93,12 @@ func Map[E any](s []E, f mapFunc[E]) []E {
 	return result
 }
 
-type keepFunc[E any] func(E) bool
+type retainer[E any] func(E) bool
 
 // Filter applies the function it's passed to each element in the slice
 // it's passed to filter out unwanted elements and return the resulting,
 // filtered slice.
-func Filter[E any](s []E, f keepFunc[E]) []E {
+func Filter[E any](s []E, f retainer[E]) []E {
 	result := []E{}
 
 	for _, v := range s {
@@ -110,14 +110,14 @@ func Filter[E any](s []E, f keepFunc[E]) []E {
 	return result
 }
 
-type reduceFunc[E any] func(E, E) E
+type reducer[E any] func(E, E) E
 
 // Reduce executes the function it's passed on each element of the
 // slice it's passed, in order and beginning with the specified initial
 // value, passing in the return value from the calculation on the preceding
 // element. It returns the final result, after operating on all elements in
 // the slice.
-func Reduce[E any](s []E, init E, f reduceFunc[E]) E {
+func Reduce[E any](s []E, init E, f reducer[E]) E {
 	cur := init
 
 	for _, v := range s {
