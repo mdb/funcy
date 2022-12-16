@@ -1,8 +1,6 @@
 package funcy
 
 import (
-	"sort"
-
 	"golang.org/x/exp/constraints"
 )
 
@@ -43,18 +41,43 @@ func Dedupe[E comparable](s []E) []E {
 	return result
 }
 
+func partition[E constraints.Ordered](arr []E, low, high int) ([]E, int) {
+	pivot := arr[high]
+	i := low
+
+	for j := low; j < high; j++ {
+		if arr[j] < pivot {
+			arr[i], arr[j] = arr[j], arr[i]
+			i++
+		}
+	}
+
+	arr[i], arr[high] = arr[high], arr[i]
+
+	return arr, i
+}
+
+func quicksort[E constraints.Ordered](arr []E, low, high int) []E {
+	if low < high {
+		var p int
+		arr, p = partition(arr, low, high)
+		arr = quicksort(arr, low, p-1)
+		arr = quicksort(arr, p+1, high)
+	}
+
+	return arr
+}
+
+// Quicksort implements the quicksort algorithm to sort the slice
+// it's passed.
+func Quicksort[E constraints.Ordered](arr []E) []E {
+	return quicksort(arr, 0, len(arr)-1)
+}
+
 // Sort returns a version of the slice it's passed with all
 // elements in ascending sorted order.
 func Sort[E constraints.Ordered](s []E) []E {
-	result := make([]E, len(s))
-
-	copy(result, s)
-
-	sort.Slice(result, func(i, j int) bool {
-		return result[i] < result[j]
-	})
-
-	return result
+	return Quicksort(s)
 }
 
 type mapFunc[E any] func(E) E
