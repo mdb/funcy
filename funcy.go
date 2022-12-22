@@ -114,6 +114,8 @@ func Filter[E any](s []E, f retainer[E]) []E {
 
 type finder[E any] func(E) bool
 
+var ErrNotFound = errors.New("not found")
+
 // Find applies the function it's passed to each element in the slice
 // and returns the first element for which the function returns true.
 func Find[E any](s []E, f finder[E]) (E, error) {
@@ -125,7 +127,7 @@ func Find[E any](s []E, f finder[E]) (E, error) {
 
 	var e E
 
-	return e, errors.New("not found")
+	return e, ErrNotFound
 }
 
 type evaluator[E any] func(E) bool
