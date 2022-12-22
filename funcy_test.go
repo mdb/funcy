@@ -139,3 +139,23 @@ func TestReduce(t *testing.T) {
 		t.Fatalf("expected: %v, got: %v", expected, got)
 	}
 }
+
+func TestReduceRight(t *testing.T) {
+	list := []int{3, 1, 2}
+
+	got := ReduceRight(list, 0, func(cur, val int) int {
+		return cur + val
+	})
+	expected := 6
+	if expected != got {
+		t.Fatalf("expected: %v, got: %v", expected, got)
+	}
+
+	got = Reduce(list, 2, func(cur, val int) int {
+		return cur + val
+	})
+	expected = 8
+	if expected != got {
+		t.Fatalf("expected: %v, got: %v", expected, got)
+	}
+}

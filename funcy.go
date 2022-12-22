@@ -159,3 +159,18 @@ func Reduce[E any](s []E, init E, f reducer[E]) E {
 
 	return cur
 }
+
+// ReduceRight executes the function it's passed on each element of the
+// slice it's passed, in reverse order and beginning with the specified
+// initial value, passing in the return value from the calculation on the
+// preceding element. It returns the final result, after operating on all
+// elements in the slice.
+func ReduceRight[E any](s []E, init E, f reducer[E]) E {
+	cur := init
+
+	for i := len(s) - 1; i >= 0; i-- {
+		cur = f(cur, s[i])
+	}
+
+	return cur
+}
