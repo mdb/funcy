@@ -6,8 +6,8 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-// Contains returns true if the slice it's passed contains the
-// element it's passed.
+// Contains returns true if the slice it's passed contains the element it's
+// passed.
 func Contains[E comparable](s []E, v E) bool {
 	for _, vs := range s {
 		if v == vs {
@@ -69,22 +69,21 @@ func quicksort[E constraints.Ordered](arr []E, low, high int) []E {
 	return arr
 }
 
-// Quicksort implements the quicksort algorithm to sort the slice
-// it's passed.
+// Quicksort implements the quicksort algorithm to sort the slice it's passed.
 func Quicksort[E constraints.Ordered](arr []E) []E {
 	return quicksort(arr, 0, len(arr)-1)
 }
 
-// Sort returns the slice it's passed with all elements in ascending
-// sorted order. It uses Quicksort.
+// Sort returns the slice it's passed with all elements in ascending sorted
+// order. It uses Quicksort.
 func Sort[E constraints.Ordered](s []E) []E {
 	return Quicksort(s)
 }
 
 type mapper[E any] func(E) E
 
-// Map applies the function it's passed to each element in the slice
-// it's passed and returns the resulting slice.
+// Map applies the function it's passed to each element in the slice it's passed
+// and returns the resulting slice.
 func Map[E any](s []E, f mapper[E]) []E {
 	result := make([]E, len(s))
 
@@ -97,9 +96,9 @@ func Map[E any](s []E, f mapper[E]) []E {
 
 type retainer[E any] func(E) bool
 
-// Filter applies the function it's passed to each element in the slice
-// it's passed to filter out unwanted elements and return the resulting,
-// filtered slice.
+// Filter applies the function it's passed to each element in the slice it's
+// passed to filter out unwanted elements and return the resulting, filtered
+// slice.
 func Filter[E any](s []E, f retainer[E]) []E {
 	result := []E{}
 
@@ -116,8 +115,8 @@ type finder[E any] func(E) bool
 
 var ErrNotFound = errors.New("not found")
 
-// Find applies the function it's passed to each element in the slice
-// and returns the first element for which the function returns true.
+// Find applies the function it's passed to each element in the slice and
+// returns the first element for which the function returns true.
 func Find[E any](s []E, f finder[E]) (E, error) {
 	for _, v := range s {
 		if f(v) {
@@ -132,9 +131,9 @@ func Find[E any](s []E, f finder[E]) (E, error) {
 
 type evaluator[E any] func(E) bool
 
-// Any applies the function it's passed to each element in the slice
-// and returns true for the first element for which the function returns
-// true. Otherwise, it returns false.
+// Any applies the function it's passed to each element in the slice and returns
+// true for the first element for which the function returns true. Otherwise, it
+// returns false.
 func Any[E any](s []E, f evaluator[E]) bool {
 	for _, v := range s {
 		if f(v) {
@@ -147,11 +146,10 @@ func Any[E any](s []E, f evaluator[E]) bool {
 
 type reducer[E any] func(E, E) E
 
-// Reduce executes the function it's passed on each element of the
-// slice it's passed, in order and beginning with the specified initial
-// value, passing in the return value from the calculation on the preceding
-// element. It returns the final result, after operating on all elements in
-// the slice.
+// Reduce executes the function it's passed on each element of the slice it's
+// passed, in order and beginning with the specified initial value, passing in
+// the return value from the calculation on the preceding element. It returns
+// the final result, after operating on all elements in the slice.
 func Reduce[E any](s []E, init E, f reducer[E]) E {
 	cur := init
 
@@ -162,11 +160,10 @@ func Reduce[E any](s []E, init E, f reducer[E]) E {
 	return cur
 }
 
-// ReduceRight executes the function it's passed on each element of the
-// slice it's passed, in reverse order and beginning with the specified
-// initial value, passing in the return value from the calculation on the
-// preceding element. It returns the final result, after operating on all
-// elements in the slice.
+// ReduceRight executes the function it's passed on each element of the slice
+// it's passed, in reverse order and beginning with the specified initial value,
+// passing in the return value from the calculation on the preceding element. It
+// returns the final result, after operating on all elements in the slice.
 func ReduceRight[E any](s []E, init E, f reducer[E]) E {
 	cur := init
 
