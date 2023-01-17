@@ -1,4 +1,4 @@
-[![CI](https://github.com/mdb/funcy/actions/workflows/ci.yaml/badge.svg)](https://github.com/mdb/funcy/actions/workflows/ci.yaml) [![PkgGoDev](https://pkg.go.dev/badge/github.com/mdb/funcy)](https://pkg.go.dev/github.com/mdb/funcy)
+[![CI](https://github.com/mdb/funcy/actions/workflows/ci.yaml/badge.svg)](https://github.com/mdb/funcy/actions/workflows/ci.yaml) [![PkgGoDev](https://pkg.go.dev/badge/github.com/mdb/funcy)](https://pkg.go.dev/github.com/mdb/funcy) [![Go Report Card](https://goreportcard.com/badge/github.com/mdb/funcy)](https://goreportcard.com/report/github.com/mdb/funcy)
 
 # funcy ("funky")
 
