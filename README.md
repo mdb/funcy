@@ -1,4 +1,4 @@
-[![CI](https://github.com/mdb/funcy/actions/workflows/ci.yaml/badge.svg)](https://github.com/mdb/funcy/actions/workflows/ci.yaml) [![Go Documentation](https://godocs.io/github.com/mdb/funcy?status.svg)](https://godocs.io/github.com/mdb/funcy)
+[![CI](https://github.com/mdb/funcy/actions/workflows/ci.yaml/badge.svg)](https://github.com/mdb/funcy/actions/workflows/ci.yaml) [![PkgGoDev](https://pkg.go.dev/badge/github.com/mdb/funcy)](https://pkg.go.dev/github.com/mdb/funcy)
 
 # funcy ("funky")
 
@@ -14,7 +14,7 @@ make
 
 ## API
 
-[![Go Documentation](https://godocs.io/github.com/mdb/funcy?status.svg)](https://godocs.io/github.com/mdb/funcy)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/mdb/funcy)](https://pkg.go.dev/github.com/mdb/funcy)
 
 Summary:
 
