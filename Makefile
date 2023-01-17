@@ -3,7 +3,7 @@ SOURCE=./...
 .DEFAULT_GOAL := test
 
 test: vet test-fmt
-	go test $(SOURCE) -v -coverprofile=coverage.out
+	go test -v -coverprofile=coverage.out -race $(SOURCE)
 .PHONY: test
 
 vet:
