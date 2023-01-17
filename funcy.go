@@ -114,10 +114,13 @@ func Filter[E any](s []E, f retainer[E]) []E {
 
 type finder[E any] func(E) bool
 
+// ErrNotFound is an error representing the scenario in which Find fails to find
+// a matching element.
 var ErrNotFound = errors.New("not found")
 
 // Find applies the function it's passed to each element in the slice and
-// returns the first element for which the function returns true.
+// returns the first element for which the function returns true. If no element
+// is found, it returns an ErrNotFound.
 func Find[E any](s []E, f finder[E]) (E, error) {
 	for _, v := range s {
 		if f(v) {
