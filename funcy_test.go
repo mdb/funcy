@@ -10,7 +10,6 @@ func ExampleContains() {
 	list := []string{"foo", "bar", "baz"}
 
 	fmt.Println(Contains(list, "foo"))
-	//
 	// Output: true
 }
 
@@ -34,7 +33,6 @@ func ExampleDedupe() {
 	list := []string{"foo", "foo", "bar"}
 
 	fmt.Println(Dedupe(list))
-	//
 	// Output: [foo bar]
 }
 
@@ -52,7 +50,6 @@ func ExampleReverse() {
 	list := []string{"foo", "bar", "baz"}
 
 	fmt.Println(Reverse(list))
-	//
 	// Output: [baz bar foo]
 }
 
@@ -70,7 +67,6 @@ func ExampleSort() {
 	list := []int{3, 1, 2}
 
 	fmt.Println(Sort(list))
-	//
 	// Output: [1 2 3]
 }
 
@@ -90,7 +86,6 @@ func ExampleMap() {
 	fmt.Println(Map(list, func(item int) int {
 		return item + 2
 	}))
-	//
 	// Output: [5 3 4]
 }
 
@@ -134,7 +129,6 @@ func ExampleFind() {
 	fmt.Println(Find(list, func(item int) bool {
 		return item%3 == 0
 	}))
-	//
 	// Output: 3 <nil>
 }
 
@@ -167,7 +161,6 @@ func ExampleAny() {
 	fmt.Println(Any(list, func(item int) bool {
 		return item%3 == 0
 	}))
-	//
 	// Output: true
 }
 
@@ -199,7 +192,6 @@ func ExampleReduce() {
 	fmt.Println(Reduce(list, 0, func(cur, val int) int {
 		return cur + val
 	}))
-	//
 	// Output: 6
 }
 
@@ -229,7 +221,6 @@ func ExampleReduceRight() {
 	fmt.Println(ReduceRight(list, 20, func(cur, val int) int {
 		return cur - val
 	}))
-	//
 	// Output: 3
 }
 
@@ -251,5 +242,4 @@ func TestReduceRight(t *testing.T) {
 	if expected != got {
 		t.Fatalf("expected: %v, got: %v", expected, got)
 	}
-
 }

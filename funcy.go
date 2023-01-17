@@ -1,3 +1,4 @@
+// Package funcy provides a collection of functional utilities using generics.
 package funcy
 
 import (
